@@ -1,0 +1,9 @@
+/* Add application styles & imports to this file! */
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body{
+  background-color: #303030;
+  font-family: 'PT Serif', serif;
+}

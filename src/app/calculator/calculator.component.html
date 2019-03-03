@@ -1,0 +1,51 @@
+<div class="main-wrapper">
+
+<div class="calculator-wrapper shadow">
+
+  <div class="result-wrapper">
+   
+    <div>{{calculationProcess}}</div>
+    <div> {{numTyped}}</div>
+    <br>
+    <div class="result">{{displayResult}}</div>
+
+  </div>
+
+  <div class="input-wrapper">
+
+    <button class="btn-calculator" (click)= "operator(' + ')">+</button>
+    <button class="btn-calculator" (click)= "operator(' - ')">-</button>
+    <button class="btn-calculator" (click)= "operator(' x ')">x</button>
+    <button class="btn-calculator" (click)= "operator(' ÷ ')">÷</button>
+
+   <div class="flex">
+
+      <div class="calculator-inner-wrapper">
+
+      <button class="btn-calculator" (click)="calc('7')">7</button>
+      <button class="btn-calculator" (click)="calc('8')">8</button>
+      <button class="btn-calculator" (click)="calc('9')">9</button>
+
+      <button class="btn-calculator" (click)="calc('4')">4</button>
+      <button class="btn-calculator" (click)="calc('5')">5</button>
+      <button class="btn-calculator" (click)="calc('6')">6</button>
+
+      <button class="btn-calculator" (click)="calc('1')">1</button>
+      <button class="btn-calculator" (click)="calc('2')">2</button>
+      <button class="btn-calculator" (click)="calc('3')">3</button>
+
+      <button class="btn-calculator" (click)="calc('0')">0</button>
+      <button class="btn-calculator" (click)="calc('.')">.</button>
+      <button class="btn-calculator" (click)="reset()">C</button>
+
+    </div>
+
+    <button class="btn-calculator" (click)="getResult()">=</button>
+
+   </div>
+
+  </div>
+
+</div>
+
+</div>
