@@ -5,13 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 
-import { calculatorComponent } from './calculator/calculator.component';
+import { calculatorComponent } from './homepage/calculator/calculator.component';
 import { HistoryComponent } from './history/history.component';
-import { Routes , RouterModule} from '@angular/router'
+import { Routes , RouterModule} from '@angular/router';
+import { HomepageComponent } from './homepage/homepage.component'
 
 const appRoute : Routes  = [
 
-  { path : '' , component : calculatorComponent},
+  { path : '' , component : HomepageComponent },
   { path : 'history' , component : HistoryComponent}
 
 ]
@@ -27,7 +28,8 @@ const appRoute : Routes  = [
     AppComponent,
     HelloComponent,
     calculatorComponent,
-    HistoryComponent
+    HistoryComponent,
+    HomepageComponent
   ],
 
   bootstrap: [ 
