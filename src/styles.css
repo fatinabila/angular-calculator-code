@@ -3,7 +3,28 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
 body{
   background-color: #303030;
   font-family: 'PT Serif', serif;
+}
+
+.button-wrap {
+  margin: auto;
+  padding: auto;
+  width: 10%;
+  margin-bottom: 45px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size:25px;
+}
+
+.heading {
+  font-family: 'Pacifico', cursive;
+  margin:auto;
+  width:20%;
+  color:#fff;
+  padding:25px;
+  font-size:30px;
 }
