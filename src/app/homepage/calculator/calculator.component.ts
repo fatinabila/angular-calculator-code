@@ -22,7 +22,8 @@ export class calculatorComponent {
   this.calcString= []
   this.displayResult=0;
   this.num= [];
-  this.firstNum= undefined; this.secondNum = undefined;
+  this.firstNum= undefined; 
+  this.secondNum = undefined;
   }
 
   calc(number){
@@ -123,25 +124,15 @@ export class calculatorComponent {
   }
 
   getResult (){
-    this.secondNum =parseFloat(this.numTyped);
-    this.calcString.push(this.secondNum);
-    this.calculation();
-    this.updateCalcProcess();
-    this.clearTyping();
-  }
-
-  bracket(){
-
-    if(this.openBracket){
-      this.calc("(");
-      this.openBracket = !this.openBracket;
-    } 
     
-    else {
-      this.calc(")");
-      this.openBracket = !this.openBracket;
+    if (this.firstNum != undefined){
+      this.secondNum =parseFloat(this.numTyped);
+      this.calcString.push(this.secondNum);
+      this.calculation();
+      this.updateCalcProcess();
+      this.clearTyping();
     }
-
+ 
   }
  
 }
