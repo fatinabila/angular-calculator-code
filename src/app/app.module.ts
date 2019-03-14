@@ -10,6 +10,8 @@ import { HistoryComponent } from './history/history.component';
 import { Routes , RouterModule} from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component'
 
+import { HistoryService } from './history/service/history.service'
+
 const appRoute : Routes  = [
 
   { path : '' , component : HomepageComponent },
@@ -37,7 +39,9 @@ const appRoute : Routes  = [
   ],
 
   providers :[
-  //  {provide: APP_BASE_HREF, useValue: '/'}
+
+    HistoryService
+  
   ]
 })
 export class AppModule { }

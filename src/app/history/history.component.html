@@ -4,3 +4,20 @@
 <div class="button-wrap">
   <a routerLink ="/"><button type="button" class="btn btn-warning">Home</button></a>
 </div>
+
+
+<div class="wrapper">
+
+  <li *ngFor="let item of history">
+    {{ item }}
+  </li>
+
+</div>
+
+<div class="msg-wrap" *ngIf="empty" [ngClass]="{'history-empty ': empty, 'history-not-empty ': !empty }">
+
+  <div class="h4">
+      No history yet :(
+  </div>
+  
+</div>

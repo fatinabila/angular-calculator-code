@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
-
+import { Component, EventEmitter , Output} from '@angular/core';
+import { HistoryService } from '../../history/service/history.service';
+ 
 @Component({
   selector: 'calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.css']
 })
 export class calculatorComponent {
+
+  constructor (public historyService :HistoryService ){ }
+
+  @Output() history = new EventEmitter<any>();
 
   numTyped : any = 0;
   calculationProcess : any = "";
@@ -22,7 +27,8 @@ export class calculatorComponent {
   this.calcString= []
   this.displayResult=0;
   this.num= [];
-  this.firstNum= undefined; this.secondNum = undefined;
+  this.firstNum= undefined; 
+  this.secondNum = undefined;
   }
 
   calc(number){
@@ -66,13 +72,13 @@ export class calculatorComponent {
     if (this.numTyped != 0){
 
       if(this.firstNum == undefined){
-       this.firstNum = parseFloat(this.numTyped);
-       this.calcString.push(this.firstNum);
+        this.firstNum = parseFloat(this.numTyped);
+        this.calcString.push(this.firstNum);
       } 
   
       else {
-       this.secondNum =parseFloat(this.numTyped);
-       this.calcString.push(this.secondNum);
+        this.secondNum =parseFloat(this.numTyped);
+        this.calcString.push(this.secondNum);
       }
 
       this.calculation();
@@ -91,57 +97,61 @@ export class calculatorComponent {
 
       let lastOperatorInArray = this.calcString[this.calcString.length-2];
 
-      /* if function is called from getResult();*/
+      /* If function is called from getResult() */
       if (typeof lastOperatorInArray == "number"){
        lastOperatorInArray = this.calcString[this.calcString.length-1];
-      }
+      } 
 
       if(lastOperatorInArray == " + "){ 
-         this.displayResult = this.firstNum + this.secondNum;
-         this.firstNum= this.displayResult;
-       }
+        this.displayResult = this.firstNum + this.secondNum;
+      }
 
-       else if (lastOperatorInArray == " - "){
-         this.displayResult = this.firstNum - this.secondNum;
-         this.firstNum= this.displayResult;
-       }
+      else if (lastOperatorInArray == " - "){
+        this.displayResult = this.firstNum - this.secondNum;
+      }
 
-       else if(lastOperatorInArray == " ÷ "){
-         this.displayResult = this.firstNum / this.secondNum;
-         this.firstNum= this.displayResult;
-       } 
+      else if(lastOperatorInArray == " ÷ "){
+        this.displayResult = this.firstNum / this.secondNum;
+      } 
 
-       else if(lastOperatorInArray == " x "){
-         this.displayResult = this.firstNum * this.secondNum;
-         this.firstNum= this.displayResult;
-       }    
+      else if(lastOperatorInArray == " x "){
+        this.displayResult = this.firstNum * this.secondNum;
+      }  
+       
+      this.historyService.addHistory(this.firstNum+" "+lastOperatorInArray+" "+this.secondNum+" = "+this.displayResult);
+
+      this.firstNum= this.displayResult;
+
      }
 
      else { 
        this.displayResult = this.firstNum;
      }
+
+   
   }
 
   getResult (){
-    this.secondNum =parseFloat(this.numTyped);
-    this.calcString.push(this.secondNum);
-    this.calculation();
-    this.updateCalcProcess();
-    this.clearTyping();
-  }
 
-  bracket(){
+    /* Check if user already typed the first number */
 
-    if(this.openBracket){
-      this.calc("(");
-      this.openBracket = !this.openBracket;
-    } 
+    if (this.firstNum != undefined){
+
+      this.secondNum =parseFloat(this.numTyped);
+
+      /* check if user press '=' when user didnt type the second number yet */
+
+      if (this.secondNum !=0 ) {
+
+          this.calcString.push(this.secondNum);
+          this.calculation();
+          this.updateCalcProcess();
+          this.clearTyping();
     
-    else {
-      this.calc(")");
-      this.openBracket = !this.openBracket;
+      }
+   
     }
-
+ 
   }
  
 }
