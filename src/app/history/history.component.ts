@@ -22,9 +22,6 @@ export class HistoryComponent implements OnInit {
   }
 
   deleteHistory(id){
-    console.log(id)
-
-    this.history;
 
     for (let i=0; i< this.history.length ; i++){
 

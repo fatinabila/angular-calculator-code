@@ -20,8 +20,6 @@ export class HistoryService {
       id :id,  history: data
     });
 
-    console.log(this.history);
-
   }
 
 

@@ -9,9 +9,7 @@ import { HistoryService } from '../../history/service/history.service';
 export class calculatorComponent {
 
   constructor (public historyService :HistoryService ){ }
-
-  @Output() history = new EventEmitter<any>();
-
+  
   numTyped : any = 0;
   calculationProcess : any = "";
   calcString : any = []
@@ -95,12 +93,10 @@ export class calculatorComponent {
 
     if (this.firstNum != undefined && this.secondNum != undefined){
 
-      let lastOperatorInArray = this.calcString[this.calcString.length-2];
+      let lastOperatorInArray;
 
-      /* If function is called from getResult() */
-      if (typeof lastOperatorInArray == "number"){
-       lastOperatorInArray = this.calcString[this.calcString.length-1];
-      } 
+      // Check if user call calculation() from getResult()
+      typeof lastOperatorInArray == "number" ?  lastOperatorInArray = this.calcString[this.calcString.length-1] :  lastOperatorInArray = this.calcString[this.calcString.length-2];
 
       if(lastOperatorInArray == " + "){ 
         this.displayResult = this.firstNum + this.secondNum;
@@ -117,9 +113,7 @@ export class calculatorComponent {
       else if(lastOperatorInArray == " x "){
         this.displayResult = this.firstNum * this.secondNum;
       }  
-       
-  
-
+      
       this.firstNum= this.displayResult;
 
      }
@@ -127,20 +121,17 @@ export class calculatorComponent {
      else { 
        this.displayResult = this.firstNum;
      }
-
    
   }
 
   getResult (){
 
-    /* Check if user already typed the first number */
-
+    // Check if user already typed the first number
     if (this.firstNum != undefined){
 
       this.secondNum =parseFloat(this.numTyped);
 
-      /* check if user press '=' when user didnt type the second number yet */
-
+      //check if user press '=' when user don't type the second number yet
       if (this.secondNum !=0 ) {
 
           this.calcString.push(this.secondNum);
