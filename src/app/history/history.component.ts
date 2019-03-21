@@ -17,7 +17,7 @@ export class HistoryComponent implements OnInit {
 
     this.history=this.historyService.getHistory();
 
-    this.history.length == 0 ?  this.empty = true :  this.empty = false;
+    this.isHistoryEmpty();
   
   }
 
@@ -33,6 +33,13 @@ export class HistoryComponent implements OnInit {
       }
 
     }
+
+    this.isHistoryEmpty();
+    
+  }
+
+  isHistoryEmpty (){
+    this.history.length == 0 ?  this.empty = true :  this.empty = false;
   }
 
   
