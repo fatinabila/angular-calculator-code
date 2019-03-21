@@ -7,20 +7,27 @@ export class HistoryService {
 
   constructor() { }
 
-  history : any = []
+  historyTemp : any = [];
+  history : any = [];
 
   addHistory (data){
 
-    this.history.push(data);
+    this.historyTemp.push(data);
 
-  
+    let id = this.historyTemp.length;
+
+    this.history.push({
+      id :id,  history: data
+    });
+
+    console.log(this.history);
 
   }
+
 
   getHistory(){
 
     return this.history;  
-  
 
   }
 

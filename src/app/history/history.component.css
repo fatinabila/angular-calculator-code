@@ -4,6 +4,10 @@
     padding: 15px;
 }
 
+.wrapper {
+    margin-top: 65px;
+}
+
 .history-empty {
     background-color: #303030;
 }
@@ -18,7 +22,7 @@
     font-family: 'Josefin Sans', sans-serif;
     font-size:25px;
     border: solid 1px white;
-    padding:15px;
+    padding:25px;
     margin: 10px 0px;
 }
 
@@ -29,3 +33,27 @@
     color: white;
     font-weight: 700;
 }
+
+.delete > img {
+    width:25px;
+    height:25px;
+}
+
+.item {
+    position:relative;
+}
+
+.item > div:nth-child(1){
+    position: absolute;
+    left:0;
+    bottom: 0;
+    top: -15px;
+}
+
+.item > div:nth-child(2){
+    position: absolute;
+    right:0;
+    bottom: 0;
+    top: -12px;
+}
+

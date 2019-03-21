@@ -8,7 +8,7 @@ import { HelloComponent } from './hello.component';
 import { calculatorComponent } from './homepage/calculator/calculator.component';
 import { HistoryComponent } from './history/history.component';
 import { Routes , RouterModule} from '@angular/router';
-import { HomepageComponent } from './homepage/homepage.component'
+import { HomepageComponent } from './homepage/homepage.component';
 
 import { HistoryService } from './history/service/history.service'
 
@@ -23,6 +23,7 @@ const appRoute : Routes  = [
   imports:      [ 
     BrowserModule, 
     FormsModule ,
+    
     RouterModule.forRoot(appRoute)
   ],
 

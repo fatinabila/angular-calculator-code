@@ -118,7 +118,7 @@ export class calculatorComponent {
         this.displayResult = this.firstNum * this.secondNum;
       }  
        
-      this.historyService.addHistory(this.firstNum+" "+lastOperatorInArray+" "+this.secondNum+" = "+this.displayResult);
+  
 
       this.firstNum= this.displayResult;
 
@@ -146,6 +146,7 @@ export class calculatorComponent {
           this.calcString.push(this.secondNum);
           this.calculation();
           this.updateCalcProcess();
+          this.historyService.addHistory(""+this.calculationProcess+" = "+this.displayResult );
           this.clearTyping();
     
       }

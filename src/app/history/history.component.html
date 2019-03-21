@@ -1,15 +1,12 @@
-<div class="heading">History</div>
-
-
-<div class="button-wrap">
-  <a routerLink ="/"><button type="button" class="btn btn-warning">Home</button></a>
-</div>
-
-
 <div class="wrapper">
 
   <li *ngFor="let item of history">
-    {{ item }}
+   
+    <div class="flex"  class="item">
+      <div>{{ item.history }}</div>
+      <div (click)=deleteHistory(item.id) class="delete"><img src="../../assets/img/multiply.svg"></div>
+    </div>
+
   </li>
 
 </div>
@@ -21,3 +18,4 @@
   </div>
   
 </div>
+
