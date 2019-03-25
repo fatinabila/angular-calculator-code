@@ -45,3 +45,13 @@
     width: 65%;
     margin: 45px auto;
   }
+
+
+  .github {
+    width: 50px;
+    margin: auto;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    left: 0;
+  }
