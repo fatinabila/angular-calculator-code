@@ -29,20 +29,27 @@ export class calculatorComponent {
   this.secondNum = undefined;
   }
 
+  /**** Get number typed by the user ****/
+
   calc(number){
     this.num.push(number);
     this.numTyped=  this.num.join('');
-    this.updateCalcProcess();
   }
+
+  /**** Show calculation process  ****/
 
   updateCalcProcess(){
      this.calculationProcess = this.calcString.join('');
   }
 
+  /*** Reset the number typed ****/
+
   clearTyping(){
     this.numTyped = 0;
     this.num =[];
   }
+
+  /** Check if the last element in the calcString is also an operator. If yes, replace the operator  ****/
 
   checkOperator(operator){
 
@@ -62,6 +69,8 @@ export class calculatorComponent {
     }
  
   }
+
+  /*** Update calculation as new operator is entered ****/
 
   operator(type){
 
@@ -89,13 +98,15 @@ export class calculatorComponent {
  
   }
 
+  /**** calculation() : Called either from funtion operator() or getResult()  ****/
+
   calculation(){
 
     if (this.firstNum != undefined && this.secondNum != undefined){
 
       let lastOperatorInArray;
 
-      // Check if user call calculation() from getResult()
+      /**** Check if function called from getResult()  ****/
       typeof lastOperatorInArray == "number" ?  lastOperatorInArray = this.calcString[this.calcString.length-1] :  lastOperatorInArray = this.calcString[this.calcString.length-2];
 
       if(lastOperatorInArray == " + "){ 
@@ -124,14 +135,14 @@ export class calculatorComponent {
    
   }
 
+  /**** getResult() : considering if user enter '=' when first and second number is not entered yet ****/
+
   getResult (){
 
-    // Check if user already typed the first number
     if (this.firstNum != undefined){
 
       this.secondNum =parseFloat(this.numTyped);
 
-      //check if user press '=' when user don't type the second number yet
       if (this.secondNum !=0 ) {
 
           this.calcString.push(this.secondNum);
@@ -139,7 +150,10 @@ export class calculatorComponent {
           this.updateCalcProcess();
           this.historyService.addHistory(""+this.calculationProcess+" = "+this.displayResult );
           this.clearTyping();
-    
+          this.firstNum= undefined; 
+          this.secondNum = undefined;
+          this.calcString= [];
+
       }
    
     }
